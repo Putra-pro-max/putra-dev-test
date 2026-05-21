@@ -391,7 +391,10 @@
     <main class="relative z-10 min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-28 pt-32 pb-24">
         <div class="slash-deco hidden lg:block"></div>
 
-        {{-- ── Headline ── --}}
+        <div class="fade-up delay-1 inline-flex items-center gap-2.5 mb-8 rounded-full px-4 py-2 w-fit">
+            <span class="dot-pulse"></span>
+            <span class="text-xs font-semibold tracking-[0.18em] uppercase text-white/50">Available for work</span>
+        </div>
 
         <h1 class="fade-up delay-2 font-extrabold leading-[1.06] tracking-tight max-w-4xl">
             <span class="block text-[clamp(2.4rem,6.5vw,3.2rem)] text-white">Building sustainable</span>
