@@ -888,28 +888,37 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
 
     <script>
-        function techStackFilter() {
+               function techStackFilter() {
             return {
                 activeTab: 'all',
                 tabs: [
-                    { key: 'all',      label: 'All Stack' },
-                    { key: 'frontend', label: 'Frontend'  },
-                    { key: 'backend',  label: 'Backend'   },
-                    { key: 'tools',    label: 'Tools'     }
+                    { key: 'all',       label: 'All Stack' },
+                    { key: 'frontend',  label: 'Frontend'  },
+                    { key: 'backend',   label: 'Backend'   },
+                    { key: 'tools',     label: 'Tools'     },
+                    { key: 'ai-team',   label: 'Teamwork' }
                 ],
                 skills: [
-                    { name: 'HTML',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',           level: 'Advanced',     cat: 'frontend' },
-                    { name: 'CSS',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',               level: 'Advanced',     cat: 'frontend' },
+                    { name: 'HTML',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',         level: 'Advanced',     cat: 'frontend' },
+                    { name: 'CSS',          img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',           level: 'Advanced',     cat: 'frontend' },
                     { name: 'JavaScript',   img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',   level: 'Advanced',     cat: 'frontend' },
                     { name: 'Tailwind CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', level: 'Advanced',     cat: 'frontend' },
                     { name: 'Bootstrap',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',     level: 'Intermediate', cat: 'frontend' },
+                    { name: 'Alpine.js',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/alpinejs/alpinejs-original.svg',       level: 'Intermediate', cat: 'frontend' },
                     { name: 'PHP',          img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',                 level: 'Advanced',     cat: 'backend'  },
                     { name: 'Laravel',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',         level: 'Advanced',     cat: 'backend'  },
                     { name: 'MySQL',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',             level: 'Advanced',     cat: 'backend'  },
                     { name: 'Node.js',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',           level: 'Intermediate', cat: 'backend'  },
                     { name: 'Vite',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',           level: 'Intermediate', cat: 'tools'    },
-                    { name: 'Figma',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',             level: 'Advanced', cat: 'tools'    },
-                    { name: 'VS Code', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg', level: 'Advanced', cat: 'tools' },
+                    { name: 'Figma',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',             level: 'Advanced',     cat: 'tools'    },
+                    { name: 'GitHub',       img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',           level: 'Advanced',     cat: 'tools'    },
+                    { name: 'VS Code',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',           level: 'Advanced',     cat: 'tools'    },
+                        
+                    // ═══════════ AI CODING TEAM (FILTER TEAMWORK) ═══════════
+                    { name: 'GLM-Turbo-5',  img: 'https://open.bigmodel.cn/favicon.ico',                                                    level: 'Advanced',     cat: 'ai-team'  },
+                    { name: 'Gemini 1.5 Pro', img: 'https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d472dc12e75069dc1e14.svg',      level: 'Advanced',     cat: 'ai-team'  },
+                    { name: 'Claude Sonnet', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/claude/claude-original.svg',           level: 'Advanced',     cat: 'ai-team'  },
+                    { name: 'GPT-4o',       img: 'https://npm-assets.v0.dev/assets/openai.svg',                                             level: 'Advanced',     cat: 'ai-team'  }
                 ],
                 get filtered() {
                     return this.activeTab === 'all'
@@ -918,7 +927,7 @@
                 }
             }
         }
-
+                        
         function contactForm() {
             return {
                 isSubmitting: false,
