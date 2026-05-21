@@ -600,7 +600,7 @@
                 </div>
                 <div class="w-full md:w-3/5">
                     <h2 class="text-4xl md:text-3xl font-extrabold tracking-tight mb-10">
-                        Haii, Saya <span class="gradient-text">Muhammad Putra</span>.
+                        Haloo, I'm <span class="gradient-text">Muhammad Putra</span>.
                     </h2>
                     <p class="text-white/50 leading-relaxed text-base mb-7">
                         As an Informatics Engineering Student, I bridge the gap between robust backend logic and captivating frontend experiences. I specialize in building clean, performant, and user-centered web applications. I believe that great code tells a story—solving real-world problems while delivering elegant digital experiences.
