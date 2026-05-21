@@ -453,7 +453,7 @@
                  }
              }">
 
-            <p class="text-[clamp(0.88rem,1.5vw,1.05rem)] text-white/45 leading-relaxed font-light min-h-[4.5rem]">
+            <p class="text-[clamp(0.88rem,1.5vw,1.05rem)] txt-muted leading-relaxed font-light min-h-[4.5rem]">
                 <span x-text="text"></span>
                 <span class="inline-block w-[2px] h-[1em] bg-emerald-400/70 align-middle ml-0.5 animate-blink"></span>
             </p>
@@ -735,7 +735,7 @@
 
         @empty
         <div class="col-span-2 flex flex-col items-center justify-center py-20 text-center">
-            <p class="text-white/20 text-sm">Belum ada project yang ditambahkan.</p>
+            <p class="text-sm txt-muted font-light tracking-wide text-center">Belum ada project yang ditambahkan.</p>   
         </div>
         @endforelse
     </div>
