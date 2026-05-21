@@ -912,23 +912,28 @@
             { name: 'Vite',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',           level: 'Intermediate', cat: 'tools'    },
             { name: 'Figma',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',             level: 'Advanced',     cat: 'tools'    },
             
-            // Perbaikan Icon GitHub (Gua ganti ke path official devicons ter-update)
-            { name: 'GitHub',       img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',    level: 'Advanced',     cat: 'tools'    },
+            // FIX GITHUB: Pakai versi github-original.svg tapi ditambahkan filter CSS via Tailwind di HTML jika perlu, 
+            // atau pake URL Iconify khusus dark mode yang warnanya putih salju mendelik.
+            { name: 'GitHub',       img: 'https://api.iconify.design/bi:github.svg?color=%23ffffff',                                level: 'Advanced',     cat: 'tools'    },
             { name: 'VS Code',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',           level: 'Advanced',     cat: 'tools'    },
             
-            // ═══════════ PERBAIKAN ICON AI TEAMWORK (Kini pakai CDN super stabil) ═══════════
-            { name: 'GLM-Turbo-5',  img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-line.svg', level: 'Advanced', cat: 'ai-team' }, 
+            // ═══════════ FIX ALL AI ICONS FOR DARK MODE ═══════════
+            // GLM-Turbo-5: Pakai icon Robot pintar warna Emerald/Green biar serasi ama tema portofolio lu & ga broken
+            { name: 'GLM-Turbo-5',  img: 'https://api.iconify.design/fluent:bot-sparkle-24-filled.svg?color=%2310b981',             level: 'Advanced',     cat: 'ai-team'  },
+            // Gemini: Menggunakan Official SVG warna asli (bukan hitam) jadi menyala di dark mode
             { name: 'Gemini 1.5 Pro', img: 'https://api.iconify.design/logos:google-gemini.svg',                                        level: 'Advanced',     cat: 'ai-team'  },
-            { name: 'Claude Sonnet', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/claude/claude-original.svg',           level: 'Advanced',     cat: 'ai-team'  },
-            { name: 'GPT-4o',       img: 'https://api.iconify.design/logos:openai-icon.svg',                                            level: 'Advanced',     cat: 'ai-team'  }
-            ],
-            get filtered() {
+            // Claude Sonnet: Diperbaiki jalurnya ke format ter-update (pasti muncul)
+            { name: 'Claude Sonnet', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/claude/claude-original.svg',    level: 'Advanced',     cat: 'ai-team'  },
+            // GPT-4o: Pakai icon OpenAI warna putih terang menderang biar kelihatan di dark mode
+            { name: 'GPT-4o',       img: 'https://api.iconify.design/simple-icons:openai.svg?color=%23ffffff',                      level: 'Advanced',     cat: 'ai-team'  }
+        ],
+        get filtered() {
             return this.activeTab === 'all'
                 ? this.skills
                 : this.skills.filter(s => s.cat === this.activeTab);
-                }
-            }
         }
+    }
+}
 
         function contactForm() {
             return {
