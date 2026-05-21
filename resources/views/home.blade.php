@@ -781,13 +781,11 @@
                                 <p class="text-sm text-white/60 group-hover:text-white/90 transition-colors duration-300 font-medium">Kalimantan Selatan, Indonesia</p>
                             </div>
                         </a>
-                        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
+                        <a href="https://wa.me/6282250097049" target="_blank" rel="noopener" class="group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
                             <span class="flex items-center justify-center w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-all duration-300">
-                                <svg class="w-4 h-4 text-white/40 group-hover:text-emerald-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1zm4 0a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1z"/></svg>
-                            </span>
-                            <div>
-                                <p class="text-[0.65rem] text-white/25 uppercase tracking-wider font-medium mb-0.5">WhatsApp</p>
-                                <p class="text-sm text-white/60 group-hover:text-white/90 transition-colors duration-300 font-medium">+62 822 5009 7049</p>
+                                <svg class="w-4 h-4 text-white/40 group-hover:text-emerald-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1zm4 0a.5.5 0 0 0 1 0V9a.5.5 0 
+
+                                <p class="text-sm text-white/6₀ group-hover:text-white/9₀ transition-colors duration-3₀₀ font-medium">+62 822 5₀₀₉ 7₀₄₉</p>
                             </div>
                         </a>
                     </div>
