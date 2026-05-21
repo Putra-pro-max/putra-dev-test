@@ -763,13 +763,13 @@
                         </p>
                     </div>
                     <div class="flex flex-col gap-3">
-                        <a href="mailto:putra@example.com" class="group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
+                        <a href="mailto:muhammadputra.dev@gmail.com" class="group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
                             <span class="flex items-center justify-center w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-all duration-300">
                                 <svg class="w-4 h-4 text-white/40 group-hover:text-emerald-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
                             </span>
                             <div>
                                 <p class="text-[0.65rem] text-white/25 uppercase tracking-wider font-medium mb-0.5">Email</p>
-                                <p class="text-sm text-white/60 group-hover:text-white/90 transition-colors duration-300 font-medium">putra-dev@gmail.com</p>
+                                <p class="text-sm text-white/60 group-hover:text-white/90 transition-colors duration-300 font-medium">muhammadputra.dev@gmail.com</p>
                             </div>
                         </a>
                         <a href="https://maps.google.com/?q=Kalimantan+Selatan" target="_blank" rel="noopener" class="group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
