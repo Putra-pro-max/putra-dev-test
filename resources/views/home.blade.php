@@ -834,17 +834,14 @@
                 </p>
             </div>
             <div class="flex items-center gap-1">
-                <a href="https://github.com/" target="_blank" rel="noopener" class="group flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.03]" aria-label="GitHub">
+                <a href="https://github.com/settings/profile" target="_blank" rel="noopener" class="group flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.03]" aria-label="GitHub">
                     <svg class="w-[18px] h-[18px] text-white/35 group-hover:text-emerald-500 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                 </a>
-                <a href="https://linkedin.com/" target="_blank" rel="noopener" class="group flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.03]" aria-label="LinkedIn">
+                <a href="https://www.tiktok.com/@franns.xo" target="_blank" rel="noopener" class="group flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.03]" aria-label="LinkedIn">
                     <svg class="w-[18px] h-[18px] text-white/35 group-hover:text-emerald-500 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                 </a>
-                <a href="https://instagram.com/" target="_blank" rel="noopener" class="group flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.03]" aria-label="Instagram">
+                <a href="https://www.instagram.com/b.coenn/" target="_blank" rel="noopener" class="group flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.03]" aria-label="Instagram">
                     <svg class="w-[18px] h-[18px] text-white/35 group-hover:text-emerald-500 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-                </a>
-                <a href="https://dribbble.com/" target="_blank" rel="noopener" class="group flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.03]" aria-label="Dribbble">
-                    <svg class="w-[18px] h-[18px] text-white/35 group-hover:text-emerald-500 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"/><path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"/><path d="M8.56 2.75c4.37 6 6.02 12.26 5.44 20.25"/></svg>
                 </a>
             </div>
         </div>
