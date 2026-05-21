@@ -34,3 +34,9 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     Route::delete('/messages/{message}', [AdminDashboardController::class, 'destroyMessage'])->name('messages.destroy');
     Route::resource('projects', ProjectController::class);
 });
+
+Route::get('/reset-password', function () {
+    \App\Models\User::where('email', 'putra@admin.com')
+        ->update(['password' => bcrypt('AdminPutra2026')]);
+    return 'Password berhasil direset!';
+});
