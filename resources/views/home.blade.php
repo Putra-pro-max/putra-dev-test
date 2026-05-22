@@ -904,12 +904,12 @@
             { key: 'ai-team',   label: 'Teamwork' }
         ],
         skills: [
-            { name: 'HTML',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',         level: 'Advanced',     cat: 'frontend' },
-            { name: 'CSS',          img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',           level: 'Advanced',     cat: 'frontend' },
+            { name: 'HTML',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',             level: 'Advanced',     cat: 'frontend' },
+            { name: 'CSS',          img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',               level: 'Advanced',     cat: 'frontend' },
             { name: 'JavaScript',   img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',   level: 'Advanced',     cat: 'frontend' },
             { name: 'Tailwind CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', level: 'Advanced',     cat: 'frontend' },
             { name: 'Bootstrap',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',     level: 'Intermediate', cat: 'frontend' },
-            { name: 'Alpine.js',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/alpinejs/alpinejs-original.svg',       level: 'Intermediate', cat: 'frontend' class: },
+            { name: 'Alpine.js',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/alpinejs/alpinejs-original.svg',       level: 'Intermediate', cat: 'frontend' },
             { name: 'PHP',          img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',                 level: 'Advanced',     cat: 'backend'  },
             { name: 'Laravel',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',         level: 'Advanced',     cat: 'backend'  },
             { name: 'MySQL',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',             level: 'Advanced',     cat: 'backend'  },
