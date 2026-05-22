@@ -318,6 +318,11 @@
         html.light [class*="text-white/15"] {
         color: rgba(0,0,0,0.25) !important;
         }   
+        .icon-dark-bg { filter: invert(1); }
+        html.light .icon-dark-bg { filter: none; }
+
+        .icon-light-bg { filter: none; }
+        html.light .icon-light-bg { filter: invert(1) brightness(0.2); }
         .scroll-indicator {
         animation: bounce 2.4s ease-in-out infinite;
         transition: opacity 0.4s ease;
@@ -663,7 +668,7 @@
                      :style="'transition-delay:' + (i * 40) + 'ms'"
                      class="flex items-center justify-between w-full sm:w-[calc(50%-6px)] lg:w-[calc(33.333%-8px)] px-5 py-4 bg-white/[0.03] border border-white/[0.08] rounded-2xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03] hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(16,185,129,0.08)] cursor-default group">
                     <div class="flex items-center gap-3.5">
-                        <img :src="skill.img" :alt="skill.name" class="w-7 h-7" loading="lazy" />
+                        <img :src="skill.img" :alt="skill.name" :class="['w-7 h-7', skill.iconClass || '']" loading="lazy" />
                         <span class="text-sm font-semibold text-white/70 group-hover:text-white transition-colors duration-300" x-text="skill.name"></span>
                     </div>
                     <span x-show="skill.level === 'Advanced'" class="text-[0.65rem] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/15" x-text="skill.level"></span>
@@ -904,7 +909,7 @@
             { name: 'JavaScript',   img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',   level: 'Advanced',     cat: 'frontend' },
             { name: 'Tailwind CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', level: 'Advanced',     cat: 'frontend' },
             { name: 'Bootstrap',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',     level: 'Intermediate', cat: 'frontend' },
-            { name: 'Alpine.js',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/alpinejs/alpinejs-original.svg',       level: 'Intermediate', cat: 'frontend' },
+            { name: 'Alpine.js',    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/alpinejs/alpinejs-original.svg',       level: 'Intermediate', cat: 'frontend' class: },
             { name: 'PHP',          img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',                 level: 'Advanced',     cat: 'backend'  },
             { name: 'Laravel',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',         level: 'Advanced',     cat: 'backend'  },
             { name: 'MySQL',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',             level: 'Advanced',     cat: 'backend'  },
@@ -912,20 +917,12 @@
             { name: 'Vite',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',           level: 'Intermediate', cat: 'tools'    },
             { name: 'Figma',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',             level: 'Advanced',     cat: 'tools'    },
             
-            // FIX GITHUB: Pakai versi github-original.svg tapi ditambahkan filter CSS via Tailwind di HTML jika perlu, 
-            // atau pake URL Iconify khusus dark mode yang warnanya putih salju mendelik.
-            { name: 'GitHub',       img: 'https://api.iconify.design/bi:github.svg?color=%23ffffff',                                level: 'Advanced',     cat: 'tools'    },
-            { name: 'VS Code',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',           level: 'Advanced',     cat: 'tools'    },
-            
-            // ═══════════ FIX ALL AI ICONS FOR DARK MODE ═══════════
-            // GLM-Turbo-5: Pakai icon Robot pintar warna Emerald/Green biar serasi ama tema portofolio lu & ga broken
-            { name: 'GLM-Turbo-5',  img: 'https://z.ai/favicon.ico',             level: 'Advanced',     cat: 'ai-team'  },
-            // Gemini: Menggunakan Official SVG warna asli (bukan hitam) jadi menyala di dark mode
-            { name: 'Gemini 1.5 Pro', img: 'https://api.iconify.design/logos:google-gemini.svg',                                        level: 'Advanced',     cat: 'ai-team'  },
-            // Claude Sonnet: Diperbaiki jalurnya ke format ter-update (pasti muncul)
-            { name: 'Claude Sonnet', img: 'https://cdn.simpleicons.org/anthropic',    level: 'Advanced',     cat: 'ai-team'  },
-            // GPT-4o: Pakai icon OpenAI warna putih terang menderang biar kelihatan di dark mode
-            { name: 'GPT-4o',       img: 'https://api.iconify.design/simple-icons:openai.svg?color=%23ffffff',                      level: 'Advanced',     cat: 'ai-team'  }
+            { name: 'GitHub',       img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/github.svg',        level: 'Advanced', cat: 'tools',    iconClass: 'icon-dark-bg' },
+            { name: 'VS Code',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg', level: 'Advanced', cat: 'tools' },
+            { name: 'GLM-Turbo-5',  img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/zhipu-color.svg',    level: 'Advanced', cat: 'ai-team' },
+            { name: 'Gemini 1.5 Pro', img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg', level: 'Advanced', cat: 'ai-team' },
+            { name: 'Claude Sonnet', img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg',  level: 'Advanced', cat: 'ai-team',  iconClass: 'icon-light-bg' },
+            { name: 'GPT-4o',       img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg',         level: 'Advanced', cat: 'ai-team',  iconClass: 'icon-dark-bg' },
         ],
         get filtered() {
             return this.activeTab === 'all'
