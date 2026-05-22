@@ -12,10 +12,16 @@ class TrackVisitor
         // Jangan track admin & asset
         if (!$request->is('admin*') && !$request->is('*.css') && !$request->is('*.js')) {
 
-            $sessionKey = 'visited_' . md5($request->ip() . $request->path());
+            $ipAddress = $request->ip();
 
-            // Hanya catat jika belum pernah visit di session ini
-            if (!$request->session()->has($sessionKey)) {
+            // 💡 PERBAIKAN UTAMA: 
+            // Cek langsung ke database apakah IP ini SUDAH PERNAH tercatat HARI INI
+            $alreadyVisitedToday = Visitor::where('ip_address', $ipAddress)
+                ->whereDate('created_at', today())
+                ->exists();
+
+            // Jika hari ini IP tersebut belum pernah dicatat, baru kita masukkan ke database
+            if (!$alreadyVisitedToday) {
 
                 $agent = $request->userAgent() ?? '';
 
@@ -35,14 +41,11 @@ class TrackVisitor
                 elseif (str_contains($agent, 'Linux'))   $os = 'Linux';
 
                 Visitor::create([
-                    'ip_address' => $request->ip(),
+                    'ip_address' => $ipAddress,
                     'browser'    => $browser,
                     'os'         => $os,
-                    'page'       => $request->path(),
+                    'page'       => $request->path(), // Menyimpan halaman pertama yang dia datangi hari ini
                 ]);
-
-                // Tandai sudah dikunjungi selama session berlangsung
-                $request->session()->put($sessionKey, true);
             }
         }
 

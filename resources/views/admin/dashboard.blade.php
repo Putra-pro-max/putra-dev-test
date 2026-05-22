@@ -152,10 +152,29 @@
             .view-all:hover { color: #34d399; }
 
             /* Responsive Table Shell */
-            .table-responsive-wrapper {
-                width: 100%;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
+        .table-responsive-wrapper {
+        width: 100%;
+        max-height: 350px; /* Batas tinggi tabel sebelum di-scroll. Sesuaikan dengan seleramu */
+        overflow-x: auto;
+        overflow-y: auto;  /* Memunculkan scroll vertikal (atas-bawah) */
+        -webkit-overflow-scrolling: touch;
+        }
+
+        .vtable th { 
+        padding: 0.5rem 0.75rem; 
+        text-align: left; 
+        font-size: 0.6rem; 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        letter-spacing: 0.1em; 
+        color: rgba(255,255,255,0.2); 
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        
+        /* Tambahan agar header tidak ikut ter-scroll */
+        position: sticky;
+        top: 0;
+        background: #0f0f0f; /* Samakan dengan warna background card agar teks tidak menumpuk */
+        z-index: 10;
             }
 
             /* Visitor table */

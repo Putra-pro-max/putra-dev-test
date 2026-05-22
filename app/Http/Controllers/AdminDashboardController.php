@@ -16,7 +16,11 @@ class AdminDashboardController extends Controller
             'totalMessages'   => ContactMessage::count(),
             'unreadMessages'  => ContactMessage::where('is_read', false)->count(),
             'totalProjects'   => Project::count(),
-            'recentVisitors'  => Visitor::latest()->take(8)->get(),
+            
+            // 💡 PERBAIKAN DI SINI:
+            // Ambil 50 data terbaru, saring IP yang unik, lalu ambil 8 teratas untuk ditampilkan
+            'recentVisitors'  => Visitor::latest()->take(50)->get()->unique('ip_address')->take(8),
+            
             'recentMessages'  => ContactMessage::latest()->take(5)->get(),
             'browserStats'    => Visitor::selectRaw('browser, count(*) as total')->groupBy('browser')->get(),
             'osStats'         => Visitor::selectRaw('os, count(*) as total')->groupBy('os')->get(),
@@ -44,5 +48,4 @@ class AdminDashboardController extends Controller
         $message->delete();
         return back()->with('success', 'Pesan dihapus.');
     }
-    
 }
