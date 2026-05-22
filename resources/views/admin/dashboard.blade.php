@@ -160,6 +160,38 @@
         -webkit-overflow-scrolling: touch;
         }
 
+        /* 1. Atur container pembungkus tabel kamu (ganti .table-responsive dengan class-mu) */
+        .table-responsive {
+            max-height: 380px; /* Sesuaikan tinggi maksimal tabel sebelum nge-scroll */
+            overflow-y: auto;
+            
+            /* Standarisasi untuk Firefox */
+            scrollbar-width: thin;
+            scrollbar-color: #059669 #111827; /* Warna thumb (hijau) & track (gelap) */
+        }
+        
+        /* 2. Style Scrollbar untuk Chrome, Safari, dan Edge */
+        .table-responsive::-webkit-scrollbar {
+            width: 6px; /* Bikin ukuran scrollbar jadi tipis dan elegan */
+        }
+        
+        /* Background jalur scrollbar */
+        .table-responsive::-webkit-scrollbar-track {
+            background: #111827; /* Warna hitam pekat senada dashboard */
+            border-radius: 10px;
+        }
+        
+        /* Batang scrollbar yang digeser */
+        .table-responsive::-webkit-scrollbar-thumb {
+            background: #059669; /* Warna hijau emerald sesuai warna badge Chrome */
+            border-radius: 10px;
+        }
+        
+        /* Efek saat kursor hover di batang scrollbar */
+        .table-responsive::-webkit-scrollbar-thumb:hover {
+            background: #10b981; /* Hijau yang sedikit lebih terang saat disentuh */
+        }
+
         .vtable th { 
         padding: 0.5rem 0.75rem; 
         text-align: left; 
