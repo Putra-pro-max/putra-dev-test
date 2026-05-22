@@ -919,11 +919,11 @@
             
             // ═══════════ FIX ALL AI ICONS FOR DARK MODE ═══════════
             // GLM-Turbo-5: Pakai icon Robot pintar warna Emerald/Green biar serasi ama tema portofolio lu & ga broken
-            { name: 'GLM-Turbo-5',  img: 'https://api.iconify.design/fluent:bot-sparkle-24-filled.svg?color=%2310b981',             level: 'Advanced',     cat: 'ai-team'  },
+            { name: 'GLM-Turbo-5',  img: 'https://z.ai/favicon.ico',             level: 'Advanced',     cat: 'ai-team'  },
             // Gemini: Menggunakan Official SVG warna asli (bukan hitam) jadi menyala di dark mode
             { name: 'Gemini 1.5 Pro', img: 'https://api.iconify.design/logos:google-gemini.svg',                                        level: 'Advanced',     cat: 'ai-team'  },
             // Claude Sonnet: Diperbaiki jalurnya ke format ter-update (pasti muncul)
-            { name: 'Claude Sonnet', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/claude/claude-original.svg',    level: 'Advanced',     cat: 'ai-team'  },
+            { name: 'Claude Sonnet', img: 'https://cdn.simpleicons.org/anthropic',    level: 'Advanced',     cat: 'ai-team'  },
             // GPT-4o: Pakai icon OpenAI warna putih terang menderang biar kelihatan di dark mode
             { name: 'GPT-4o',       img: 'https://api.iconify.design/simple-icons:openai.svg?color=%23ffffff',                      level: 'Advanced',     cat: 'ai-team'  }
         ],
