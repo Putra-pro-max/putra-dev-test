@@ -40,3 +40,13 @@ Route::get('/reset-password', function () {
         ->update(['password' => bcrypt('AdminPutra2026')]);
     return 'Password berhasil direset!';
 });
+
+// Route sementara untuk membersihkan data visitor di hosting
+Route::get('/secure-clean-visitors', function () {
+    try {
+        \DB::table('visitors')->truncate();
+        return "Mantap! Tabel visitors berhasil dibersihkan di server Railway.";
+    } catch (\Exception $e) {
+        return "Gagal membersihkan: " . $e->getMessage();
+    }
+});
