@@ -766,10 +766,10 @@
                     { name: 'Figma',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',             level: 'Advanced',     cat: 'tools'    },
                     { name: 'GitHub',       img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/github.svg',                    level: 'Advanced',     cat: 'tools',    iconClass: 'icon-dark-bg' },
                     { name: 'VS Code',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',           level: 'Advanced',     cat: 'tools'    },
-                    { name: 'GLM-Turbo-5',  img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/zhipu-color.svg',               level: 'Advanced',     cat: 'ai-team'  },
-                    { name: 'Gemini 1.5 Pro', img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg',            level: 'Advanced',     cat: 'ai-team'  },
-                    { name: 'Claude Sonnet', img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg',             level: 'Advanced',     cat: 'ai-team',  iconClass: 'icon-light-bg' },
-                    { name: 'GPT-4o',       img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg',                    level: 'Advanced',     cat: 'ai-team',  iconClass: 'icon-dark-bg' },
+                    { name: 'Z.ai (Open Source)',  img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/zhipu-color.svg',               level: 'GLM-5-Turbo',     cat: 'ai-team'  },
+                    { name: 'Gemini', img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg',            level: 'Pro 1.5',     cat: 'ai-team'  },
+                    { name: 'Claude', img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg',             level: 'Sonnet',     cat: 'ai-team',  iconClass: 'icon-light-bg' },
+                    { name: 'GPT',       img: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg',                    level: '4o',     cat: 'ai-team',  iconClass: 'icon-dark-bg' },
                 ],
                 get filtered() {
                     return this.activeTab === 'all'
