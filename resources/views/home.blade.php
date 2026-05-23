@@ -286,6 +286,10 @@
         html.light .scroll-indicator svg { color: rgba(0,0,0,0.2) !important; }
         html.light #backToTop { background: rgba(16,185,129,0.1); }
         html.light .txt-muted { color: rgba(0,0,0,0.5) !important; }
+        html.light .empty-project-icon { background: rgba(0,0,0,0.04) !important; border-color: rgba(0,0,0,0.1) !important; }
+        html.light .empty-project-icon svg { color: rgba(0,0,0,0.25) !important; }
+        html.light .empty-project-txt { color: rgba(0,0,0,0.35) !important; }
+        html.light .empty-project-sub { color: rgba(0,0,0,0.22) !important; }
     </style>
 </head>
 
@@ -385,17 +389,7 @@
 
         <div class="fade-up delay-4 flex flex-wrap items-center gap-4 mt-10">
             <a href="#project" class="btn-cta font-bold px-7 py-3.5 rounded-full text-sm tracking-wide">View My Work</a>
-            {{-- CV Download Button --}}
-            <a href="{{ asset('files/cv-muhammad-putra.pdf') }}" download
-               class="btn-outline font-bold px-7 py-3.5 rounded-full text-sm tracking-wide flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-                Download CV
-            </a>
-            <a href="#about" class="group flex items-center gap-2.5 text-sm font-medium text-white/50 hover:text-white transition-colors duration-300">
+            <a href="{{ route('personal') }}" class="group flex items-center gap-2.5 text-sm font-medium text-white/50 hover:text-white transition-colors duration-300">
                 <span class="flex items-center justify-center w-9 h-9 rounded-full border border-white/10 group-hover:border-white/25 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
@@ -584,13 +578,13 @@
                     </div>
                 </div>
             </article>
-            @empty
+           @empty
             <div class="col-span-2 flex flex-col items-center justify-center py-24 text-center gap-4">
-                <div class="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center mb-2">
-                    <svg class="w-7 h-7 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                </div>
-                <p class="text-white/25 text-sm font-light">Belum ada project yang ditambahkan.</p>
-                <p class="text-white/15 text-xs">Coming soon...</p>
+            <div class="empty-project-icon w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center mb-2">
+            <svg class="w-7 h-7 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <p class="empty-project-txt text-white/25 text-sm font-light">Belum ada project yang ditambahkan.</p>
+            <p class="empty-project-sub text-white/15 text-xs">Coming soon...</p>
             </div>
             @endforelse
         </div>
