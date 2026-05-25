@@ -24,104 +24,18 @@
             overflow-x: hidden;
         }
 
-        /* ══════════════════════════════════════
-           SCROLL PROGRESS BAR
-           ══════════════════════════════════════ */
-        .scroll-progress {
-            position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
-            background: linear-gradient(90deg, #10b981, #34d399, #6ee7b7);
-            width: 0%; pointer-events: none;
-            box-shadow: 0 0 10px rgba(16,185,129,0.5), 0 0 30px rgba(16,185,129,0.15);
-        }
-
-        /* ══════════════════════════════════════
-           SCROLL REVEAL SYSTEM
-           ══════════════════════════════════════ */
-        [data-reveal] {
-            opacity: 0;
-            transition-property: opacity, transform, filter, clip-path;
-            transition-duration: 0.9s;
-            transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform, filter;
-        }
-
-        /* ── Directions ── */
-        [data-reveal="up"]        { transform: translateY(60px); }
-        [data-reveal="down"]      { transform: translateY(-50px); }
-        [data-reveal="left"]      { transform: translateX(70px); }
-        [data-reveal="right"]     { transform: translateX(-70px); }
-        [data-reveal="scale"]     { transform: scale(0.85); }
-        [data-reveal="blur"]      { filter: blur(12px); transform: translateY(35px); }
-        [data-reveal="rotate"]    { transform: rotate(5deg) scale(0.92) translateY(35px); }
-        [data-reveal="flip"]      { transform: perspective(900px) rotateX(14deg) translateY(45px); }
-        [data-reveal="slide-up"]  { transform: translateY(120px); transition-duration: 1.1s; }
-        [data-reveal="pop"]       { transform: scale(0.5); transition-duration: 0.7s; transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-        [data-reveal="clip-up"]   { clip-path: inset(100% 0 0 0); transition-duration: 1s; }
-        [data-reveal="wipe-right"]{ clip-path: inset(0 100% 0 0); transition-duration: 0.9s; }
-        [data-reveal="fade"]      { transform: none; transition-duration: 1.2s; }
-
-        /* ── Revealed state ── */
-        [data-reveal].revealed {
-            opacity: 1;
-            transform: none;
-            filter: none;
-            clip-path: none;
-        }
-
-        /* ── Scroll-UP direction: reverse transforms ── */
-        html.is-scrolling-up [data-reveal="up"]        { transform: translateY(-50px); }
-        html.is-scrolling-up [data-reveal="down"]      { transform: translateY(50px); }
-        html.is-scrolling-up [data-reveal="left"]      { transform: translateX(-60px); }
-        html.is-scrolling-up [data-reveal="right"]     { transform: translateX(60px); }
-        html.is-scrolling-up [data-reveal="rotate"]    { transform: rotate(-5deg) scale(0.92) translateY(-35px); }
-        html.is-scrolling-up [data-reveal="flip"]      { transform: perspective(900px) rotateX(-14deg) translateY(-45px); }
-        html.is-scrolling-up [data-reveal="clip-up"]   { clip-path: inset(0 0 100% 0); }
-        html.is-scrolling-up [data-reveal="wipe-right"]{ clip-path: inset(0 0 0 100%); }
-
-        /* ── Section line draw ── */
-        .section-line {
-            width: 0; height: 2px; border-radius: 2px;
-            background: linear-gradient(90deg, transparent, #10b981, #34d399, transparent);
-            transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-            margin: 0 auto 1.5rem;
-        }
-        .section-line.revealed { width: 80px; }
-
-        /* ── Counter glow pulse ── */
-        @keyframes counter-glow {
-            0%, 100% { text-shadow: 0 0 8px rgba(16,185,129,0.3); }
-            50%       { text-shadow: 0 0 20px rgba(16,185,129,0.6), 0 0 40px rgba(52,211,153,0.2); }
-        }
-        .counter-active { animation: counter-glow 2s ease-in-out 1; }
-
-        /* ── Shimmer sweep on revealed cards ── */
-        .shimmer-sweep { position: relative; overflow: hidden; }
-        .shimmer-sweep::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
-            background: linear-gradient(105deg, transparent 30%, rgba(16,185,129,0.07) 50%, transparent 70%);
-            transition: left 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
-            pointer-events: none;
-        }
-        .shimmer-sweep.revealed::after { left: 150%; }
-
-        /* ══════════════════════════════════════
-           EXISTING STYLES (unchanged)
-           ══════════════════════════════════════ */
-
         /* ── Glow Backgrounds ── */
         .bg-glow-tl {
             position: fixed; top: -220px; left: -220px;
             width: 620px; height: 620px; border-radius: 50%;
             background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%);
             pointer-events: none; z-index: 0;
-            transition: transform 0.1s linear;
         }
         .bg-glow-br {
             position: fixed; bottom: -250px; right: -250px;
             width: 720px; height: 720px; border-radius: 50%;
             background: radial-gradient(circle, rgba(52,211,153,0.08) 0%, transparent 70%);
             pointer-events: none; z-index: 0;
-            transition: transform 0.1s linear;
         }
         .bg-glow-center {
             position: fixed; top: 40%; left: 55%;
@@ -129,7 +43,6 @@
             transform: translate(-50%, -50%);
             background: radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 65%);
             pointer-events: none; z-index: 0;
-            transition: transform 0.1s linear;
         }
 
         /* ── Nav ── */
@@ -377,37 +290,15 @@
         html.light .empty-project-icon svg { color: rgba(0,0,0,0.25) !important; }
         html.light .empty-project-txt { color: rgba(0,0,0,0.35) !important; }
         html.light .empty-project-sub { color: rgba(0,0,0,0.22) !important; }
-
-        /* ── Magnetic card tilt ── */
-        .magnetic-card {
-            transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s ease, border-color 0.4s ease;
-            transform-style: preserve-3d;
-        }
-
-        /* ── Reduced Motion ── */
-        @media (prefers-reduced-motion: reduce) {
-            [data-reveal], [data-reveal].revealed {
-                opacity: 1 !important; transform: none !important;
-                filter: none !important; clip-path: none !important;
-                transition-duration: 0.01ms !important;
-            }
-            .section-line { width: 80px !important; transition-duration: 0.01ms !important; }
-            .marquee-track { animation-duration: 0.01ms !important; }
-            .shimmer-sweep::after { display: none; }
-            .magnetic-card { transition-duration: 0.01ms !important; }
-        }
     </style>
 </head>
 
 <body class="relative min-h-screen antialiased">
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
     <div class="noise-overlay"></div>
-    <div class="bg-glow-tl" id="glowTl"></div>
-    <div class="bg-glow-br" id="glowBr"></div>
-    <div class="bg-glow-center" id="glowCenter"></div>
+    <div class="bg-glow-tl"></div>
+    <div class="bg-glow-br"></div>
+    <div class="bg-glow-center"></div>
 
     {{-- ═══════════ NAVBAR ═══════════ --}}
     <header class="fixed top-0 inset-x-0 z-50 flex flex-col items-center pt-5 px-4">
@@ -453,15 +344,15 @@
     </header>
 
     {{-- ═══════════ HERO ═══════════ --}}
-    <main class="relative z-10 min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-28 pt-32 pb-24" id="heroSection">
-        <div class="slash-deco hidden lg:block" id="slashDeco"></div>
+    <main class="relative z-10 min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-28 pt-32 pb-24">
+        <div class="slash-deco hidden lg:block"></div>
 
-        <div class="fade-up delay-1 inline-flex items-center gap-2.5 mb-8 rounded-full px-4 py-2 w-fit">
+        <div class="fade-up delay-1 inline-flex items-center gap-2.5 mb-8  rounded-full px-4 py-2 w-fit">
             <span class="dot-pulse"></span>
             <span class="text-xs font-semibold tracking-[0.18em] uppercase text-white/50">Available for work</span>
         </div>
 
-        <h1 class="fade-up delay-2 font-extrabold leading-[1.06] tracking-tight max-w-4xl" id="heroTitle">
+        <h1 class="fade-up delay-2 font-extrabold leading-[1.06] tracking-tight max-w-4xl">
             <span class="block text-[clamp(2.4rem,6.5vw,3.2rem)] text-white">Building sustainable and</span>
             <span class="block text-[clamp(2.4rem,6.5vw,3.2rem)]">
                 <span class="gradient-text">impactful digital</span>
@@ -469,7 +360,7 @@
             </span>
         </h1>
 
-        <div class="fade-up delay-3 mt-7 max-w-xl" id="heroTypewriter"
+        <div class="fade-up delay-3 mt-7 max-w-xl"
              x-data="{
                  sentences: [
                      'Informatics Engineering student and Fullstack Developer focused on building clean, performant, and user-centered web applications.',
@@ -496,7 +387,7 @@
             </p>
         </div>
 
-        <div class="fade-up delay-4 flex flex-wrap items-center gap-4 mt-10" id="heroCta">
+        <div class="fade-up delay-4 flex flex-wrap items-center gap-4 mt-10">
             <a href="#project" class="btn-cta font-bold px-7 py-3.5 rounded-full text-sm tracking-wide">View My Work</a>
             <a href="/personal" class="group flex items-center gap-2.5 text-sm font-medium text-white/50 hover:text-white transition-colors duration-300">
                 <span class="flex items-center justify-center w-9 h-9 rounded-full border border-white/10 group-hover:border-white/25 transition-colors">
@@ -509,7 +400,7 @@
         </div>
 
         {{-- ═══════════ MARQUEE TECH STACK ═══════════ --}}
-        <div class="fade-up delay-5 w-full mt-16 py-6 relative" id="heroMarquee">
+        <div class="fade-up delay-5 w-full mt-16 py-6 relative">
             <div class="marquee-mask">
                 <div class="marquee-track">
                     @php
@@ -566,21 +457,20 @@
 
         {{-- ═══════════ ABOUT ═══════════ --}}
         <section id="about"></section>
-        <div class="section-header mt-22" data-reveal="up">
+        <div class="section-header mt-22">
             <p class="section-eyebrow">About me</p>
-            <div class="section-line"></div>
             <h2 class="section-title">Storyteller & Developer</h2>
         </div>
 
-        <div class="shimmer-sweep w-full p-8 md:p-12 rounded-3xl border border-white/[0.06] bg-white/[0.02] relative overflow-hidden" data-reveal="slide-up">
+        <div class="fade-up delay-6 w-full p-8 md:p-12 rounded-3xl border border-white/[0.06] bg-white/[0.02] relative overflow-hidden">
             <div class="absolute -top-1/2 -left-1/4 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
-                <div class="w-full md:w-2/5 relative group" data-reveal="right" data-stagger="120">
+                <div class="w-full md:w-2/5 relative group">
                     <div class="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-2xl group-hover:bg-emerald-500/30 transition-colors duration-500 scale-90"></div>
                     <img src="{{ asset('images/portofolio.webp') }}" alt="Muhammad Putra"
                          class="relative w-full max-w-xs mx-auto md:max-w-none h-auto rounded-2xl border border-white/10 object-cover shadow-2xl">
                 </div>
-                <div class="w-full md:w-3/5" data-reveal="left" data-stagger="120">
+                <div class="w-full md:w-3/5">
                     <h2 class="text-4xl md:text-3xl font-extrabold tracking-tight mb-10">
                         Haloo, I'm <span class="gradient-text">Muhammad Putra</span>.
                     </h2>
@@ -590,19 +480,19 @@
                     <p class="text-white/50 leading-relaxed text-base mb-7">
                         Currently, my go-to tech stack includes Laravel for building secure, scalable backend architectures, paired with Tailwind CSS and Alpine.js for crafting intuitive user interfaces.
                     </p>
-                    <div class="flex flex-wrap items-center gap-6 sm:gap-8" data-stagger="100">
-                        <div data-reveal="scale">
+                    <div class="flex flex-wrap items-center gap-6 sm:gap-8">
+                        <div>
                             <p class="text-3xl font-extrabold text-white"><span class="gradient-text">Full</span>Stack</p>
                             <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">Developer</p>
                         </div>
-                        <div class="stat-divider hidden sm:block" data-reveal="fade"></div>
-                        <div data-reveal="scale">
+                        <div class="stat-divider hidden sm:block"></div>
+                        <div>
                             <p class="text-3xl font-extrabold text-white">Indo<span class="danger-text">nesia</span></p>
                             <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">Banjarmasin</p>
                         </div>
-                        <div class="stat-divider hidden sm:block" data-reveal="fade"></div>
-                        <div data-reveal="scale">
-                            <p class="text-3xl font-extrabold text-white"><span data-counter="2" class="gradient-text">0</span><span class="gradient-text">+</span></p>
+                        <div class="stat-divider hidden sm:block"></div>
+                        <div>
+                            <p class="text-3xl font-extrabold text-white">2<span class="gradient-text">+</span></p>
                             <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">years experience</p>
                         </div>
                     </div>
@@ -613,12 +503,11 @@
 
     {{-- ═══════════ SKILLS ═══════════ --}}
     <section id="skills" class="relative z-10 py-22 px-6 md:px-16 lg:px-28" x-data="techStackFilter()">
-        <div class="section-header mb-12" data-reveal="up">
+        <div class="section-header mb-12">
             <p class="section-eyebrow">What I Use</p>
-            <div class="section-line"></div>
             <h2 class="section-title">Tech Stack</h2>
         </div>
-        <div class="flex flex-wrap justify-center items-center gap-3 mb-10" data-stagger="60" data-reveal="up">
+        <div class="flex flex-wrap justify-center items-center gap-3 mb-10">
             <template x-for="tab in tabs" :key="tab.key">
                 <button @click="activeTab = tab.key"
                     :class="activeTab === tab.key ? 'bg-emerald-500 text-[#0d0d0d] border-emerald-500 font-semibold shadow-[0_0_20px_rgba(16,185,129,0.25)]' : 'bg-transparent text-white/40 border-white/10 hover:border-white/20 hover:text-white/60'"
@@ -626,7 +515,7 @@
                     x-text="tab.label"></button>
             </template>
         </div>
-        <div class="flex flex-wrap gap-3" data-reveal="up">
+        <div class="flex flex-wrap gap-3">
             <template x-for="(skill, i) in filtered" :key="skill.name">
                 <div x-transition:enter="transition ease-out duration-300"
                      x-transition:enter-start="opacity-0 translate-y-2 scale-95"
@@ -649,15 +538,13 @@
 
     {{-- ═══════════ PROJECTS ═══════════ --}}
     <section id="project" class="relative z-10 py-22 px-6 md:px-16 lg:px-28">
-        <div class="section-header mb-14" data-reveal="up">
+        <div class="section-header mb-14">
             <p class="section-eyebrow">Selected Works</p>
-            <div class="section-line"></div>
             <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projectGrid">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             @forelse($projects as $project)
-            <article class="magnetic-card group rounded-3xl bg-[#111111] border border-white/[0.05] overflow-hidden transition-all duration-500 ease-out hover:border-emerald-500/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.10)]"
-                     data-reveal="{{ $loop->index % 2 === 0 ? 'left' : 'right' }}" data-stagger="150">
+            <article class="group rounded-3xl bg-[#111111] border border-white/[0.05] overflow-hidden transition-all duration-500 ease-out hover:border-emerald-500/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.10)]">
                 <div class="overflow-hidden aspect-[16/10]">
                     <img src="{{ $project->image ? Storage::url($project->image) : 'https://picsum.photos/seed/'.$project->id.'/800/500' }}"
                          alt="{{ $project->title }}"
@@ -692,7 +579,7 @@
                 </div>
             </article>
            @empty
-            <div class="col-span-2 flex flex-col items-center justify-center py-24 text-center gap-4" data-reveal="scale">
+            <div class="col-span-2 flex flex-col items-center justify-center py-24 text-center gap-4">
             <div class="empty-project-icon w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center mb-2">
             <svg class="w-7 h-7 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </div>
@@ -705,20 +592,19 @@
 
     {{-- ═══════════ CONTACT ═══════════ --}}
     <section id="contact" class="relative z-10 py-22 px-6 md:px-16 lg:px-28">
-        <div class="section-header mb-16" data-reveal="up">
+        <div class="section-header mb-16">
             <p class="section-eyebrow">Contact</p>
-            <div class="section-line"></div>
             <h2 class="section-title">Let's Talk</h2>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
-            <div class="lg:col-span-2 flex flex-col justify-between" data-reveal="right">
+            <div class="lg:col-span-2 flex flex-col justify-between">
                 <div>
                     <h3 class="text-[clamp(1.5rem,3.5vw,2.4rem)] font-extrabold tracking-tight text-white leading-tight mb-6">Let's Work<br/>Together</h3>
                     <p class="text-sm text-white/40 leading-relaxed font-light mb-10 max-w-sm">
                         Saya selalu terbuka untuk diskusi proyek baru, ide kreatif, atau kesempatan kolaborasi.
                     </p>
                 </div>
-                <div class="flex flex-col gap-3" data-stagger="90">
+                <div class="flex flex-col gap-3">
                     <a href="mailto:muhammadputra.dev@gmail.com" class="group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
                         <span class="flex items-center justify-center w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-all duration-300">
                             <svg class="w-4 h-4 text-white/40 group-hover:text-emerald-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
@@ -748,9 +634,9 @@
                     </a>
                 </div>
             </div>
-            <div class="lg:col-span-3" data-reveal="left">
+            <div class="lg:col-span-3">
                 <form x-data="contactForm()" @submit.prevent="submitForm()"
-                    class="p-6 sm:p-8 bg-white/[0.02] border border-white/[0.06] rounded-3xl space-y-5 shimmer-sweep">
+                    class="p-6 sm:p-8 bg-white/[0.02] border border-white/[0.06] rounded-3xl space-y-5">
                     <div>
                         <label class="block text-xs font-semibold text-white/40 uppercase tracking-wider mb-2.5">Name</label>
                         <input type="text" x-model="form.name" placeholder="Nama lengkap kamu" required :disabled="isSubmitting"
@@ -779,7 +665,7 @@
     </section>
 
     {{-- ═══════════ FOOTER ═══════════ --}}
-    <footer class="relative z-10 border-t border-white/[0.05] py-10 px-6 md:px-16 lg:px-28" data-reveal="up">
+    <footer class="relative z-10 border-t border-white/[0.05] py-10 px-6 md:px-16 lg:px-28">
         <div class="flex flex-col items-center gap-6 md:flex-row md:justify-between">
             <div class="flex flex-col items-center md:items-start gap-1">
                 <p class="text-xs text-white/30 font-light">&copy; 2026 Putra<span class="text-emerald-500/60">Dev</span>. All rights reserved.</p>
@@ -806,7 +692,7 @@
     </footer>
 
     {{-- ═══════════ SCROLL INDICATOR ═══════════ --}}
-    <div class="scroll-indicator fixed bottom-3 left-1/2 -translate-x-1/2 flex-col items-center gap-0.5 transition-opacity duration-500" style="display:none; opacity:0;">
+    <div class="scroll-indicator fixed bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-0.5 transition-opacity duration-500" style="display:none; opacity:0;">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/25" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/12 -mt-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
     </div>
@@ -917,239 +803,46 @@
     </script>
 
     <script>
-    (function() {
-        'use strict';
-
-        /* ══════════════════════════════════════
-           1. SCROLL DIRECTION DETECTION
-           ══════════════════════════════════════ */
-        let lastScrollY = window.scrollY;
-        let scrollDirectionTimer = null;
-        const html = document.documentElement;
-
-        window.addEventListener('scroll', function() {
-            var currentY = window.scrollY;
-            if (currentY < lastScrollY && currentY > 100) {
-                html.classList.add('is-scrolling-up');
-                html.classList.remove('is-scrolling-down');
-            } else if (currentY > lastScrollY) {
-                html.classList.add('is-scrolling-down');
-                html.classList.remove('is-scrolling-up');
-            }
-            clearTimeout(scrollDirectionTimer);
-            scrollDirectionTimer = setTimeout(function() {
-                html.classList.remove('is-scrolling-up', 'is-scrolling-down');
-            }, 150);
-            lastScrollY = currentY;
-        }, { passive: true });
-
-
-        /* ══════════════════════════════════════
-           2. SCROLL PROGRESS BAR
-           ══════════════════════════════════════ */
-        var progressBar = document.getElementById('scrollProgress');
-        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-
-        window.addEventListener('scroll', function() {
-            var scrolled = window.scrollY;
-            var pct = Math.min((scrolled / (document.documentElement.scrollHeight - window.innerHeight)) * 100, 100);
-            progressBar.style.width = pct + '%';
-        }, { passive: true });
-
-
-        /* ══════════════════════════════════════
-           3. PARALLAX — Background Glows
-           ══════════════════════════════════════ */
-        var glowTl = document.getElementById('glowTl');
-        var glowBr = document.getElementById('glowBr');
-        var glowCenter = document.getElementById('glowCenter');
-
-        window.addEventListener('scroll', function() {
-            var y = window.scrollY;
-            if (glowTl) glowTl.style.transform = 'translate(' + (y * 0.025) + 'px, ' + (y * 0.04) + 'px)';
-            if (glowBr) glowBr.style.transform = 'translate(' + (-y * 0.02) + 'px, ' + (-y * 0.035) + 'px)';
-            if (glowCenter) glowCenter.style.transform = 'translate(calc(-50% + ' + (y * 0.01) + 'px), calc(-50% + ' + (-y * 0.015) + 'px))';
-        }, { passive: true });
-
-
-        /* ══════════════════════════════════════
-           4. HERO PARALLAX — Text & Deco
-           ══════════════════════════════════════ */
-        var heroTitle = document.getElementById('heroTitle');
-        var heroTypewriter = document.getElementById('heroTypewriter');
-        var heroCta = document.getElementById('heroCta');
-        var heroMarquee = document.getElementById('heroMarquee');
-        var slashDeco = document.getElementById('slashDeco');
-
-        window.addEventListener('scroll', function() {
-            var y = window.scrollY;
-            var factor = Math.max(0, 1 - y / 800);
-            if (heroTitle) heroTitle.style.transform = 'translateY(' + (y * 0.15) + 'px)';
-            if (heroTypewriter) heroTypewriter.style.transform = 'translateY(' + (y * 0.1) + 'px)';
-            if (heroCta) heroCta.style.transform = 'translateY(' + (y * 0.08) + 'px)';
-            if (heroMarquee) heroMarquee.style.transform = 'translateY(' + (y * 0.04) + 'px)';
-            if (slashDeco) slashDeco.style.transform = 'translateY(' + (-y * 0.12) + 'px)';
-        }, { passive: true });
-
-
-        /* ══════════════════════════════════════
-           5. STAGGER SYSTEM
-           ══════════════════════════════════════ */
-        document.querySelectorAll('[data-stagger]').forEach(function(container) {
-            var baseDelay = parseInt(container.dataset.stagger) || 80;
-            var children = container.querySelectorAll('[data-reveal]');
-            children.forEach(function(child, i) {
-                child.style.transitionDelay = (i * baseDelay) + 'ms';
-            });
-        });
-
-
-        /* ══════════════════════════════════════
-           6. INTERSECTION OBSERVER — Reveal
-           ══════════════════════════════════════ */
-        var revealObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -60px 0px'
-        });
-
-        document.querySelectorAll('[data-reveal]').forEach(function(el) {
-            revealObserver.observe(el);
-        });
-
-
-        /* ══════════════════════════════════════
-           7. SECTION LINE OBSERVER
-           ══════════════════════════════════════ */
-        var lineObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    lineObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.section-line').forEach(function(el) {
-            lineObserver.observe(el);
-        });
-
-
-        /* ══════════════════════════════════════
-           8. COUNTER ANIMATION
-           ══════════════════════════════════════ */
-        var counterObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    animateCounter(entry.target);
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('[data-counter]').forEach(function(el) {
-            counterObserver.observe(el);
-        });
-
-        function animateCounter(el) {
-            var target = parseInt(el.dataset.counter, 10);
-            var duration = 1600;
-            var start = null;
-
-            el.classList.add('counter-active');
-
-            function step(timestamp) {
-                if (!start) start = timestamp;
-                var progress = Math.min((timestamp - start) / duration, 1);
-                var eased = 1 - Math.pow(1 - progress, 4);
-                el.textContent = Math.floor(eased * target);
-                if (progress < 1) {
-                    requestAnimationFrame(step);
-                } else {
-                    el.textContent = target;
-                    setTimeout(function() { el.classList.remove('counter-active'); }, 2200);
-                }
-            }
-            requestAnimationFrame(step);
-        }
-
-
-        /* ══════════════════════════════════════
-           9. MAGNETIC 3D TILT — Project Cards
-           ══════════════════════════════════════ */
-        var magneticCards = document.querySelectorAll('.magnetic-card');
-        magneticCards.forEach(function(card) {
-            card.addEventListener('mousemove', function(e) {
-                var rect = card.getBoundingClientRect();
-                var x = e.clientX - rect.left;
-                var y = e.clientY - rect.top;
-                var centerX = rect.width / 2;
-                var centerY = rect.height / 2;
-                var rotateY = ((x - centerX) / centerX) * 3;
-                var rotateX = ((centerY - y) / centerY) * 3;
-                card.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-6px) scale(1.01)';
-            });
-            card.addEventListener('mouseleave', function() {
-                card.style.transform = '';
-            });
-        });
-
-
-        /* ══════════════════════════════════════
-           10. SCROLL INDICATOR
-           ══════════════════════════════════════ */
-        var indicator = document.querySelector('.scroll-indicator');
-        var footer = document.querySelector('footer');
-        var scrollTimer = null;
+        // ── Scroll Indicator ──
+        const indicator = document.querySelector('.scroll-indicator');
+        const footer = document.querySelector('footer');
+        let scrollTimer = null;
 
         function hideIndicator() {
             indicator.style.opacity = '0';
-            setTimeout(function() { indicator.style.display = 'none'; }, 500);
+            setTimeout(() => { indicator.style.display = 'none'; }, 500);
         }
         function showIndicator() {
             indicator.style.display = 'flex';
-            requestAnimationFrame(function() {
-                requestAnimationFrame(function() { indicator.style.opacity = '1'; });
-            });
+            requestAnimationFrame(() => { requestAnimationFrame(() => { indicator.style.opacity = '1'; }); });
         }
 
         if (indicator && footer) {
             if (window.innerWidth >= 768) showIndicator();
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', () => {
                 if (window.innerWidth < 768) return;
-                var footerVisible = footer.getBoundingClientRect().top < window.innerHeight;
+                const footerVisible = footer.getBoundingClientRect().top < window.innerHeight;
                 if (footerVisible) { clearTimeout(scrollTimer); hideIndicator(); return; }
                 hideIndicator();
                 clearTimeout(scrollTimer);
-                scrollTimer = setTimeout(function() {
+                scrollTimer = setTimeout(() => {
                     if (footer.getBoundingClientRect().top >= window.innerHeight) showIndicator();
                 }, 1000);
             });
         }
 
-
-        /* ══════════════════════════════════════
-           11. BACK TO TOP
-           ══════════════════════════════════════ */
-        var backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
+        // ── Back to Top ──
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
             if (window.scrollY > 400) backToTop.classList.add('visible');
             else backToTop.classList.remove('visible');
         });
 
-
-        /* ══════════════════════════════════════
-           12. THEME TOGGLE
-           ══════════════════════════════════════ */
-        var themeToggle = document.getElementById('themeToggle');
-        var iconSun     = document.getElementById('iconSun');
-        var iconMoon    = document.getElementById('iconMoon');
+        // ── Theme Toggle ──
+        const themeToggle = document.getElementById('themeToggle');
+        const iconSun     = document.getElementById('iconSun');
+        const iconMoon    = document.getElementById('iconMoon');
+        const html        = document.documentElement;
 
         if (localStorage.getItem('theme') === 'light') {
             html.classList.add('light');
@@ -1157,14 +850,12 @@
             iconMoon.classList.remove('hidden');
         }
 
-        themeToggle.addEventListener('click', function() {
-            var isLight = html.classList.toggle('light');
+        themeToggle.addEventListener('click', () => {
+            const isLight = html.classList.toggle('light');
             iconSun.classList.toggle('hidden', isLight);
             iconMoon.classList.toggle('hidden', !isLight);
             localStorage.setItem('theme', isLight ? 'light' : 'dark');
         });
-
-    })();
     </script>
 </body>
 </html>
