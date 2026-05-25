@@ -30,12 +30,14 @@
             width: 620px; height: 620px; border-radius: 50%;
             background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%);
             pointer-events: none; z-index: 0;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .bg-glow-br {
             position: fixed; bottom: -250px; right: -250px;
             width: 720px; height: 720px; border-radius: 50%;
             background: radial-gradient(circle, rgba(52,211,153,0.08) 0%, transparent 70%);
             pointer-events: none; z-index: 0;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .bg-glow-center {
             position: fixed; top: 40%; left: 55%;
@@ -43,6 +45,7 @@
             transform: translate(-50%, -50%);
             background: radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 65%);
             pointer-events: none; z-index: 0;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         /* ── Nav ── */
@@ -129,6 +132,190 @@
         }
         .animate-blink { animation: blink 1s step-end infinite; }
 
+        /* ── NEW: Scroll-triggered reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ── NEW: Section eyebrow line reveal ── */
+        .eyebrow-line {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-size: 0.68rem; font-weight: 600;
+            letter-spacing: 0.25em; text-transform: uppercase;
+            color: rgba(255,255,255,0.3); margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+        .eyebrow-line::before, .eyebrow-line::after {
+            content: '';
+            width: 24px; height: 1px;
+            background: rgba(255,255,255,0.12);
+            transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+        }
+        .visible .eyebrow-line::before,
+        .visible .eyebrow-line::after {
+            width: 48px;
+        }
+
+        /* ── NEW: Floating animation for about photo ── */
+        @keyframes float-y {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-12px); }
+        }
+        .float-anim {
+            animation: float-y 5s ease-in-out infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .float-anim { animation: none; }
+        }
+
+        /* ── NEW: Subtle card tilt on project cards ── */
+        .tilt-card {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        border-color 0.5s ease,
+                        box-shadow 0.5s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        /* ── NEW: Stagger delay for children ── */
+        .stagger-children > *:nth-child(1) { transition-delay: 0ms; }
+        .stagger-children > *:nth-child(2) { transition-delay: 80ms; }
+        .stagger-children > *:nth-child(3) { transition-delay: 160ms; }
+        .stagger-children > *:nth-child(4) { transition-delay: 240ms; }
+        .stagger-children > *:nth-child(5) { transition-delay: 320ms; }
+        .stagger-children > *:nth-child(6) { transition-delay: 400ms; }
+
+        /* ── NEW: Contact info items stagger ── */
+        .contact-stagger > *:nth-child(1) { transition-delay: 0ms; }
+        .contact-stagger > *:nth-child(2) { transition-delay: 100ms; }
+        .contact-stagger > *:nth-child(3) { transition-delay: 200ms; }
+
+        /* ── NEW: Underline shimmer on section titles ── */
+        .shimmer-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .shimmer-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, #10b981, #34d399, #10b981, transparent);
+            background-size: 200% 100%;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+            border-radius: 2px;
+        }
+        .visible .shimmer-underline::after {
+            transform: scaleX(1);
+            animation: shimmer-move 3s ease-in-out 1.2s infinite;
+        }
+        @keyframes shimmer-move {
+            0%, 100% { background-position: 200% 0; }
+            50%       { background-position: -200% 0; }
+        }
+
+        /* ── NEW: Stat counter glow pulse ── */
+        .stat-glow {
+            position: relative;
+        }
+        .stat-glow::before {
+            content: '';
+            position: absolute;
+            inset: -8px -12px;
+            background: radial-gradient(ellipse, rgba(16,185,129,0.08) 0%, transparent 70%);
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.6s ease 0.8s;
+        }
+        .visible .stat-glow::before {
+            opacity: 1;
+        }
+
+        /* ── NEW: Footer social icons float ── */
+        @keyframes social-float-1 {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-3px); }
+        }
+        @keyframes social-float-2 {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-5px); }
+        }
+        .social-float-1 { animation: social-float-1 3s ease-in-out 0s infinite; }
+        .social-float-2 { animation: social-float-2 3.5s ease-in-out 0.5s infinite; }
+        .social-float-3 { animation: social-float-1 2.8s ease-in-out 1s infinite; }
+
+        /* ── NEW: Navbar glass entrance ── */
+        .glass-nav {
+            animation: nav-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+        }
+        @keyframes nav-enter {
+            from { opacity: 0; transform: translateY(-20px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* ── NEW: Gradient border spin on hover for CTA ── */
+        .btn-cta {
+            position: relative;
+            z-index: 0;
+        }
+        .btn-cta::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 9999px;
+            background: conic-gradient(from 0deg, #10b981, #34d399, #6ee7b7, #10b981);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            filter: blur(6px);
+        }
+        .btn-cta:hover::before {
+            opacity: 0.5;
+            animation: spin-glow 3s linear infinite;
+        }
+        @keyframes spin-glow {
+            to { transform: rotate(360deg); }
+        }
+
         /* ── Decorative ── */
         .slash-deco {
             position: absolute; right: 0; top: 0; width: 38%; height: 100%;
@@ -140,6 +327,18 @@
         }
         .slash-deco::before { right: 18%; background: linear-gradient(180deg, transparent, rgba(16,185,129,0.18), transparent); }
         .slash-deco::after  { right: 10%; background: linear-gradient(180deg, transparent, rgba(52,211,153,0.10), transparent); }
+
+        /* ── NEW: Slash deco animated ── */
+        .slash-deco::before {
+            animation: slash-drift 8s ease-in-out infinite;
+        }
+        .slash-deco::after {
+            animation: slash-drift 8s ease-in-out 2s infinite reverse;
+        }
+        @keyframes slash-drift {
+            0%, 100% { transform: rotate(20deg) translateY(0); }
+            50%       { transform: rotate(20deg) translateY(20px); }
+        }
 
         .stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.08); }
 
@@ -281,6 +480,8 @@
         html.light .hamburger-line { background: rgba(0,0,0,0.6) !important; }
         html.light .section-eyebrow { color: rgba(0,0,0,0.3); }
         html.light .section-title { color: #0d0d0d; }
+        html.light .eyebrow-line { color: rgba(0,0,0,0.3); }
+        html.light .eyebrow-line::before, html.light .eyebrow-line::after { background: rgba(0,0,0,0.12); }
         html.light footer { border-color: rgba(0,0,0,0.08); }
         html.light .stat-divider { background: rgba(0,0,0,0.1); }
         html.light .scroll-indicator svg { color: rgba(0,0,0,0.2) !important; }
@@ -296,9 +497,9 @@
 <body class="relative min-h-screen antialiased">
 
     <div class="noise-overlay"></div>
-    <div class="bg-glow-tl"></div>
-    <div class="bg-glow-br"></div>
-    <div class="bg-glow-center"></div>
+    <div class="bg-glow-tl" id="glowTl"></div>
+    <div class="bg-glow-br" id="glowBr"></div>
+    <div class="bg-glow-center" id="glowCenter"></div>
 
     {{-- ═══════════ NAVBAR ═══════════ --}}
     <header class="fixed top-0 inset-x-0 z-50 flex flex-col items-center pt-5 px-4">
@@ -347,7 +548,7 @@
     <main class="relative z-10 min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-28 pt-32 pb-24">
         <div class="slash-deco hidden lg:block"></div>
 
-        <div class="fade-up delay-1 inline-flex items-center gap-2.5 mb-8  rounded-full px-4 py-2 w-fit">
+        <div class="fade-up delay-1 inline-flex items-center gap-2.5 mb-8 rounded-full px-4 py-2 w-fit">
             <span class="dot-pulse"></span>
             <span class="text-xs font-semibold tracking-[0.18em] uppercase text-white/50">Available for work</span>
         </div>
@@ -457,15 +658,15 @@
 
         {{-- ═══════════ ABOUT ═══════════ --}}
         <section id="about"></section>
-        <div class="section-header mt-22">
-            <p class="section-eyebrow">About me</p>
-            <h2 class="section-title">Storyteller & Developer</h2>
+        <div class="section-header mt-22 reveal">
+            <p class="eyebrow-line">About me</p>
+            <h2 class="section-title"><span class="shimmer-underline">Storyteller & Developer</span></h2>
         </div>
 
-        <div class="fade-up delay-6 w-full p-8 md:p-12 rounded-3xl border border-white/[0.06] bg-white/[0.02] relative overflow-hidden">
+        <div class="reveal-scale w-full p-8 md:p-12 rounded-3xl border border-white/[0.06] bg-white/[0.02] relative overflow-hidden">
             <div class="absolute -top-1/2 -left-1/4 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
-                <div class="w-full md:w-2/5 relative group">
+                <div class="w-full md:w-2/5 relative group float-anim">
                     <div class="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-2xl group-hover:bg-emerald-500/30 transition-colors duration-500 scale-90"></div>
                     <img src="{{ asset('images/portofolio.webp') }}" alt="Muhammad Putra"
                          class="relative w-full max-w-xs mx-auto md:max-w-none h-auto rounded-2xl border border-white/10 object-cover shadow-2xl">
@@ -481,18 +682,18 @@
                         Currently, my go-to tech stack includes Laravel for building secure, scalable backend architectures, paired with Tailwind CSS and Alpine.js for crafting intuitive user interfaces.
                     </p>
                     <div class="flex flex-wrap items-center gap-6 sm:gap-8">
-                        <div>
+                        <div class="stat-glow">
                             <p class="text-3xl font-extrabold text-white"><span class="gradient-text">Full</span>Stack</p>
                             <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">Developer</p>
                         </div>
                         <div class="stat-divider hidden sm:block"></div>
-                        <div>
+                        <div class="stat-glow">
                             <p class="text-3xl font-extrabold text-white">Indo<span class="danger-text">nesia</span></p>
                             <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">Banjarmasin</p>
                         </div>
                         <div class="stat-divider hidden sm:block"></div>
-                        <div>
-                            <p class="text-3xl font-extrabold text-white">2<span class="gradient-text">+</span></p>
+                        <div class="stat-glow">
+                            <p class="text-3xl font-extrabold text-white" data-count="2" data-suffix="+">0+</p>
                             <p class="text-[0.68rem] text-white/35 mt-1.5 tracking-[0.14em] uppercase font-medium">years experience</p>
                         </div>
                     </div>
@@ -503,11 +704,11 @@
 
     {{-- ═══════════ SKILLS ═══════════ --}}
     <section id="skills" class="relative z-10 py-22 px-6 md:px-16 lg:px-28" x-data="techStackFilter()">
-        <div class="section-header mb-12">
-            <p class="section-eyebrow">What I Use</p>
-            <h2 class="section-title">Tech Stack</h2>
+        <div class="section-header mb-12 reveal">
+            <p class="eyebrow-line">What I Use</p>
+            <h2 class="section-title"><span class="shimmer-underline">Tech Stack</span></h2>
         </div>
-        <div class="flex flex-wrap justify-center items-center gap-3 mb-10">
+        <div class="flex flex-wrap justify-center items-center gap-3 mb-10 reveal" style="transition-delay: 0.1s;">
             <template x-for="tab in tabs" :key="tab.key">
                 <button @click="activeTab = tab.key"
                     :class="activeTab === tab.key ? 'bg-emerald-500 text-[#0d0d0d] border-emerald-500 font-semibold shadow-[0_0_20px_rgba(16,185,129,0.25)]' : 'bg-transparent text-white/40 border-white/10 hover:border-white/20 hover:text-white/60'"
@@ -515,7 +716,7 @@
                     x-text="tab.label"></button>
             </template>
         </div>
-        <div class="flex flex-wrap gap-3">
+        <div class="flex flex-wrap gap-3 stagger-children">
             <template x-for="(skill, i) in filtered" :key="skill.name">
                 <div x-transition:enter="transition ease-out duration-300"
                      x-transition:enter-start="opacity-0 translate-y-2 scale-95"
@@ -538,13 +739,13 @@
 
     {{-- ═══════════ PROJECTS ═══════════ --}}
     <section id="project" class="relative z-10 py-22 px-6 md:px-16 lg:px-28">
-        <div class="section-header mb-14">
-            <p class="section-eyebrow">Selected Works</p>
+        <div class="section-header mb-14 reveal">
+            <p class="eyebrow-line">Selected Works</p>
             <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 stagger-children">
             @forelse($projects as $project)
-            <article class="group rounded-3xl bg-[#111111] border border-white/[0.05] overflow-hidden transition-all duration-500 ease-out hover:border-emerald-500/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.10)]">
+            <article class="tilt-card group rounded-3xl bg-[#111111] border border-white/[0.05] overflow-hidden hover:border-emerald-500/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.10)]">
                 <div class="overflow-hidden aspect-[16/10]">
                     <img src="{{ $project->image ? Storage::url($project->image) : 'https://picsum.photos/seed/'.$project->id.'/800/500' }}"
                          alt="{{ $project->title }}"
@@ -592,20 +793,20 @@
 
     {{-- ═══════════ CONTACT ═══════════ --}}
     <section id="contact" class="relative z-10 py-22 px-6 md:px-16 lg:px-28">
-        <div class="section-header mb-16">
-            <p class="section-eyebrow">Contact</p>
-            <h2 class="section-title">Let's Talk</h2>
+        <div class="section-header mb-16 reveal">
+            <p class="eyebrow-line">Contact</p>
+            <h2 class="section-title">Let's <span class="gradient-text">Talk</span></h2>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
             <div class="lg:col-span-2 flex flex-col justify-between">
-                <div>
+                <div class="reveal-left">
                     <h3 class="text-[clamp(1.5rem,3.5vw,2.4rem)] font-extrabold tracking-tight text-white leading-tight mb-6">Let's Work<br/>Together</h3>
                     <p class="text-sm text-white/40 leading-relaxed font-light mb-10 max-w-sm">
                         Saya selalu terbuka untuk diskusi proyek baru, ide kreatif, atau kesempatan kolaborasi.
                     </p>
                 </div>
-                <div class="flex flex-col gap-3">
-                    <a href="mailto:muhammadputra.dev@gmail.com" class="group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
+                <div class="flex flex-col gap-3 contact-stagger">
+                    <a href="mailto:muhammadputra.dev@gmail.com" class="reveal-left group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
                         <span class="flex items-center justify-center w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-all duration-300">
                             <svg class="w-4 h-4 text-white/40 group-hover:text-emerald-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
                         </span>
@@ -614,7 +815,7 @@
                             <p class="text-sm text-white/60 group-hover:text-white/90 transition-colors duration-300 font-medium">muhammadputra.dev@gmail.com</p>
                         </div>
                     </a>
-                    <a href="https://maps.google.com/?q=Kalimantan+Selatan" target="_blank" rel="noopener" class="group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
+                    <a href="https://maps.google.com/?q=Kalimantan+Selatan" target="_blank" rel="noopener" class="reveal-left group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
                         <span class="flex items-center justify-center w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-all duration-300">
                             <svg class="w-4 h-4 text-white/40 group-hover:text-emerald-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                         </span>
@@ -623,7 +824,7 @@
                             <p class="text-sm text-white/60 group-hover:text-white/90 transition-colors duration-300 font-medium">Kalimantan Selatan, Indonesia</p>
                         </div>
                     </a>
-                    <a href="https://wa.me/6282250097049" target="_blank" rel="noopener" class="group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
+                    <a href="https://wa.me/6282250097049" target="_blank" rel="noopener" class="reveal-left group flex items-center gap-3.5 px-5 py-3.5 bg-white/[0.03] border border-white/[0.08] rounded-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/[0.03]">
                         <span class="flex items-center justify-center w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-all duration-300">
                             <svg class="w-4 h-4 text-white/40 group-hover:text-emerald-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1zm4 0a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1z"/></svg>
                         </span>
@@ -634,7 +835,7 @@
                     </a>
                 </div>
             </div>
-            <div class="lg:col-span-3">
+            <div class="lg:col-span-3 reveal-right">
                 <form x-data="contactForm()" @submit.prevent="submitForm()"
                     class="p-6 sm:p-8 bg-white/[0.02] border border-white/[0.06] rounded-3xl space-y-5">
                     <div>
@@ -665,7 +866,7 @@
     </section>
 
     {{-- ═══════════ FOOTER ═══════════ --}}
-    <footer class="relative z-10 border-t border-white/[0.05] py-10 px-6 md:px-16 lg:px-28">
+    <footer class="reveal relative z-10 border-t border-white/[0.05] py-10 px-6 md:px-16 lg:px-28">
         <div class="flex flex-col items-center gap-6 md:flex-row md:justify-between">
             <div class="flex flex-col items-center md:items-start gap-1">
                 <p class="text-xs text-white/30 font-light">&copy; 2026 Putra<span class="text-emerald-500/60">Dev</span>. All rights reserved.</p>
@@ -676,15 +877,15 @@
             </div>
             <div class="flex items-center gap-2">
                 <a href="https://github.com/Putra-pro-max" target="_blank" rel="noopener"
-                   class="group flex items-center justify-center w-10 h-10 rounded-xl border border-white/[0.07] hover:border-emerald-500/40 bg-white/[0.02] hover:bg-emerald-500/[0.05] transition-all duration-300 hover:-translate-y-1" aria-label="GitHub">
+                   class="social-float-1 group flex items-center justify-center w-10 h-10 rounded-xl border border-white/[0.07] hover:border-emerald-500/40 bg-white/[0.02] hover:bg-emerald-500/[0.05] transition-all duration-300 hover:-translate-y-1" aria-label="GitHub">
                     <svg class="w-5 h-5 text-white/50 group-hover:text-emerald-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                 </a>
                 <a href="https://www.tiktok.com/@franns.xo" target="_blank" rel="noopener"
-                   class="group flex items-center justify-center w-10 h-10 rounded-xl border border-white/[0.07] hover:border-emerald-500/40 bg-white/[0.02] hover:bg-emerald-500/[0.05] transition-all duration-300 hover:-translate-y-1" aria-label="TikTok">
+                   class="social-float-2 group flex items-center justify-center w-10 h-10 rounded-xl border border-white/[0.07] hover:border-emerald-500/40 bg-white/[0.02] hover:bg-emerald-500/[0.05] transition-all duration-300 hover:-translate-y-1" aria-label="TikTok">
                     <svg class="w-5 h-5 text-white/50 group-hover:text-emerald-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
                 </a>
                 <a href="https://www.instagram.com/b.coenn/" target="_blank" rel="noopener"
-                   class="group flex items-center justify-center w-10 h-10 rounded-xl border border-white/[0.07] hover:border-emerald-500/40 bg-white/[0.02] hover:bg-emerald-500/[0.05] transition-all duration-300 hover:-translate-y-1" aria-label="Instagram">
+                   class="social-float-3 group flex items-center justify-center w-10 h-10 rounded-xl border border-white/[0.07] hover:border-emerald-500/40 bg-white/[0.02] hover:bg-emerald-500/[0.05] transition-all duration-300 hover:-translate-y-1" aria-label="Instagram">
                     <svg class="w-5 h-5 text-white/50 group-hover:text-emerald-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
                 </a>
             </div>
@@ -803,6 +1004,134 @@
     </script>
 
     <script>
+        // ── Scroll-triggered Reveal (Intersection Observer) ──
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Don't unobserve so re-entries also animate
+                    // But for performance, unobserve after first reveal:
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // ── Stagger children: apply reveal to direct children that don't have it yet ──
+        document.querySelectorAll('.stagger-children').forEach(container => {
+            const children = container.children;
+            for (let i = 0; i < children.length; i++) {
+                const child = children[i];
+                if (!child.classList.contains('visible')) {
+                    child.style.opacity = '0';
+                    child.style.transform = 'translateY(24px)';
+                    child.style.transition = `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${i * 80}ms, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${i * 80}ms`;
+                }
+            }
+            const staggerObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        Array.from(entry.target.children).forEach(child => {
+                            child.style.opacity = '1';
+                            child.style.transform = 'translateY(0)';
+                        });
+                        staggerObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+            staggerObs.observe(container);
+        });
+
+        // ── Contact stagger ──
+        document.querySelectorAll('.contact-stagger').forEach(container => {
+            const children = container.children;
+            for (let i = 0; i < children.length; i++) {
+                const child = children[i];
+                child.style.opacity = '0';
+                child.style.transform = 'translateX(-20px)';
+                child.style.transition = `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${i * 100}ms, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${i * 100}ms`;
+            }
+            const cObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        Array.from(entry.target.children).forEach(child => {
+                            child.style.opacity = '1';
+                            child.style.transform = 'translateX(0)';
+                        });
+                        cObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            cObs.observe(container);
+        });
+
+        // ── Stat counter animation ──
+        document.querySelectorAll('[data-count]').forEach(el => {
+            const target = parseInt(el.dataset.count);
+            const suffix = el.dataset.suffix || '';
+            let counted = false;
+            const countObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !counted) {
+                        counted = true;
+                        let current = 0;
+                        const duration = 1200;
+                        const step = target / (duration / 16);
+                        const counter = setInterval(() => {
+                            current += step;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(counter);
+                            }
+                            el.textContent = Math.round(current) + suffix;
+                        }, 16);
+                        countObs.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+            countObs.observe(el);
+        });
+
+        // ── Subtle card tilt on project cards ──
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -2.5;
+                const rotateY = ((x - centerX) / centerX) * 2.5;
+                card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+
+        // ── Mouse parallax on background glows ──
+        const glowTl = document.getElementById('glowTl');
+        const glowBr = document.getElementById('glowBr');
+        const glowCenter = document.getElementById('glowCenter');
+        let rafId = null;
+        let mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+            if (!rafId) {
+                rafId = requestAnimationFrame(() => {
+                    if (glowTl) glowTl.style.transform = `translate(${mouseX * 30}px, ${mouseY * 25}px)`;
+                    if (glowBr) glowBr.style.transform = `translate(${mouseX * -25}px, ${mouseY * -30}px)`;
+                    if (glowCenter) glowCenter.style.transform = `translate(calc(-50% + ${mouseX * 15}px), calc(-50% + ${mouseY * 15}px))`;
+                    rafId = null;
+                });
+            }
+        });
+
         // ── Scroll Indicator ──
         const indicator = document.querySelector('.scroll-indicator');
         const footer = document.querySelector('footer');
