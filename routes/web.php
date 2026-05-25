@@ -50,5 +50,3 @@ Route::get('/secure-clean-visitors', function () {
         return "Gagal membersihkan: " . $e->getMessage();
     }
 });
-
-Route::view('/personal', 'personal');
